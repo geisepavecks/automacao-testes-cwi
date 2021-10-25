@@ -1,0 +1,17 @@
+elementMapper\LoginPageElementMapper.class
+utils\Browser.class
+elementMapper\OrderPageElementMapper.class
+utils\Utils.class
+pageObjects\HomePage.class
+elementMapper\DressesPageElementMapper.class
+pageObjects\MyAccountPage.class
+pageObjects\DressesPage.class
+tests\BaseTests.class
+elementMapper\MyAccountPageElementMapper.class
+pageObjects\AccountCreationPage.class
+elementMapper\HomePageElementMapper.class
+pageObjects\LoginPage.class
+pageObjects\BasePage.class
+elementMapper\AccountCreationPageElementMapper.class
+pageObjects\OrderPage.class
+tests\SetupTest.class
