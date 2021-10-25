@@ -1,0 +1,4 @@
+br\com\desafioapicwi\base\BaseTest.class
+br\com\desafioapicwi\healthcheckping\tests\GetPingTest.class
+br\com\desafioapicwi\runners\AllTests.class
+br\com\desafioapicwi\healthcheckping\requests\GetPingRequest.class
