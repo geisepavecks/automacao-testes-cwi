@@ -15,13 +15,63 @@ public class GetBookingRequest {
     }
 
     @Step("Retorna uma reserva específica")
-    public Response getBookingById(){
-        Response bookingIds = this.getBookingIds();
-        int bookingId = bookingIds.jsonPath().getInt("[0].bookingid");
-
+    public Response getBookingById(int id){
         return given()
+                .pathParam("id", id)
                 .when()
-                .get("booking/" + bookingId);
+                .get("booking/{id}");
 
+    }
+
+    @Step("Retorna os IDs de reservas filtradas pelo firstname")
+    public Response getBookingsFilteredByFirstname(String name) {
+        return given()
+                .queryParam("firstname", name)
+                .when()
+                .get("booking");
+    }
+
+    @Step("Retorna os IDs de reservas filtradas pelo lastname")
+    public Response getBookingsFilteredByLastname(String name) {
+        return given()
+                .queryParam("lastname", name)
+                .when()
+                .get("booking");
+    }
+
+    @Step("Retorna os IDs de reservas filtradas pelo checkin")
+    public Response getBookingsFilteredByCheckin(String checkin) {
+        return given()
+                .queryParam("bookingdates[checkin]", checkin)
+                .when()
+                .get("booking");
+    }
+
+    @Step("Retorna os IDs de reservas filtradas pelo checkout")
+    public Response getBookingsFilteredByCheckout(String checkout) {
+        return given()
+                .queryParam("bookingdates[checkout]", checkout)
+                .when()
+                .get("booking");
+    }
+
+    @Step("Retorna os IDs de reservas filtradas pelo checkin e checkout")
+    public Response getBookingsFilteredByCheckinAndCheckout(String checkin, String checkout) {
+        return given()
+                .queryParams("bookingdates[checkin]", checkin, "checkout", checkout)
+                .when()
+                .get("booking");
+    }
+
+    @Step("Retorna os IDs de reservas filtradas pelo checkin e checkout")
+    public Response getBookingsFilteredByNameCheckinAndCheckout(String firstname, String lastname, String checkin, String checkout) {
+        return given()
+                .queryParams(
+                        "firstname", firstname,
+                        "lastname", lastname,
+                        "bookingdates[checkin]", checkin,
+                        "bookingdates[checkout]", checkout)
+                .when()
+                .get("booking");
     }
 }

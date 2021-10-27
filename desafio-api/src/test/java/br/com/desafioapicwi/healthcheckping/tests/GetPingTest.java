@@ -4,6 +4,7 @@ package br.com.desafioapicwi.healthcheckping.tests;
 import br.com.desafioapicwi.base.BaseTest;
 import br.com.desafioapicwi.healthcheckping.requests.GetPingRequest;
 import br.com.desafioapicwi.runners.AllTests;
+import br.com.desafioapicwi.suites.HealthcheckTest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -20,13 +21,13 @@ public class GetPingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class})
+    @Category({AllTests.class, HealthcheckTest.class})
     @DisplayName("Verifica se a API está online")
     public void validaApiOnline(){
 
         getPingRequest.pingReturnApi()
                 .then()
                 .statusCode(201)
-                .time(lessThan(2L), TimeUnit.SECONDS);
+                .time(lessThan(3L), TimeUnit.SECONDS);
     }
 }

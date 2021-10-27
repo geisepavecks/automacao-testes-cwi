@@ -10,8 +10,8 @@ public class BookingPayloads {
         JSONObject bookingDates = new JSONObject();
         Faker javaFaker = new Faker();
 
-        bookingDates.put("checkin", "2018-01-01");
-        bookingDates.put("checkout", "2018-01-01");
+        bookingDates.put("checkin", "2021-10-26");
+        bookingDates.put("checkout", "2021-10-28");
 
         payload.put("firstname", javaFaker.funnyName().name());
         payload.put("lastname", javaFaker.artist().name());
