@@ -5,6 +5,7 @@ import br.com.desafioapicwi.booking.payloads.BookingPayloads;
 import br.com.desafioapicwi.booking.requests.PutBookingRequest;
 import br.com.desafioapicwi.runners.AcceptanceTest;
 import br.com.desafioapicwi.runners.AllTests;
+import br.com.desafioapicwi.runners.E2eTest;
 import br.com.desafioapicwi.utils.Utils;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -49,5 +50,47 @@ public class PutBookingTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .body("", equalTo(updateBody.toMap()));
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class, E2eTest.class})
+    @DisplayName("Tentar alterar uma reserva quando o token não for enviado")
+    public void validaAlteracaoDeReservaSemEnviarToken() {
+        JSONObject updateBody = new BookingPayloads()
+                .payloadsValidBookingCreateClient();
+
+        putBookingRequest
+                .updateBookingWithoutTokenById(Utils.getABookingId(), updateBody.toString())
+                .then()
+                .statusCode(403);
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class, E2eTest.class})
+    @DisplayName("Tentar alterar uma reserva quando o token enviado for inválido")
+    public void validaAlteracaoDeReservaComTokenInvalido() {
+        JSONObject updateBody = new BookingPayloads()
+                .payloadsValidBookingCreateClient();
+
+        putBookingRequest
+                .updateBookingWithInvalidTokenById(Utils.getABookingId(), updateBody.toString())
+                .then()
+                .statusCode(403);
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class, E2eTest.class})
+    @DisplayName("Tentar alterar uma reserva que não existe")
+    public void validaAlteracaoDeReservaInexistente() {
+        JSONObject updateBody = new BookingPayloads()
+                .payloadsValidBookingCreateClient();
+
+        putBookingRequest
+                .updateBookingWithBasicAuthById(-1, updateBody.toString())
+                .then()
+                .statusCode(405);
     }
 }

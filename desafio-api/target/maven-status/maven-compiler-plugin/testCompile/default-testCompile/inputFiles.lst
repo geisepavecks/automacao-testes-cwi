@@ -9,6 +9,7 @@ C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-ap
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\runners\AcceptanceTest.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\suites\AllTests.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\suites\AcceptanceTest.java
+C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\runners\E2eTest.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\suites\SchemaTest.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\booking\requests\PutBookingRequest.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\booking\tests\PostBookingTest.java
@@ -19,3 +20,4 @@ C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-ap
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\suites\HealthcheckTest.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\booking\tests\GetBookingTest.java
 C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\utils\Utils.java
+C:\Users\DEUSA\IdeaProjects\AUTOMACAO-TESTES-CWI\AUTOMACAO-TESTES-CWI\desafio-api\src\test\java\br\com\desafioapicwi\suites\E2eTest.java

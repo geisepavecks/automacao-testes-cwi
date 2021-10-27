@@ -1,4 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: br.com.desafioapicwi.runners.AllTests
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 32.244 s - in br.com.desafioapicwi.runners.AllTests
+Tests run: 25, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 48.296 s <<< FAILURE! - in br.com.desafioapicwi.runners.AllTests
+validaListagemDeIdsDeReservasPorNameCheckinECheckout(br.com.desafioapicwi.booking.tests.GetBookingTest)  Time elapsed: 2.507 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+JSON path size() doesn't match.
+Expected: a value greater than <0>
+  Actual: 0
+
+	at br.com.desafioapicwi.booking.tests.GetBookingTest.validaListagemDeIdsDeReservasPorNameCheckinECheckout(GetBookingTest.java:188)
+

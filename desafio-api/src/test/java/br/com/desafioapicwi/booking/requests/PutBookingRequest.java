@@ -40,4 +40,36 @@ public class PutBookingRequest {
                 .when()
                 .put("booking/{id}");
     }
+
+    @Step("Tentar alterar uma reserva quando o token não for enviado")
+    public Response updateBookingWithoutTokenById(int id, String updateBody) {
+        JSONObject credentialsBody = new JSONObject();
+        credentialsBody.put("username", Utils.USERNAME);
+        credentialsBody.put("password", Utils.PASSWORD);
+
+        String tokenValue = given()
+                .headers("Content-Type", "application/json")
+                .body(credentialsBody.toString())
+                .post("auth")
+                .thenReturn().body().jsonPath().getString("token");
+
+        return given()
+                .headers("Content-Type", "application/json")
+                .pathParam("id", id)
+                .body(updateBody)
+                .when()
+                .put("booking/{id}");
+    }
+
+    @Step("Tentar alterar uma reserva quando o token enviado for inválido")
+    public Response updateBookingWithInvalidTokenById(int id, String updateBody) {
+
+        return given()
+                .headers("Content-Type", "application/json",
+                        "Cookie", "token=abc123")
+                .pathParam("id", id)
+                .body(updateBody)
+                .when()
+                .put("booking/{id}");
+    }
 }

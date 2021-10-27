@@ -42,7 +42,7 @@ public class GetBookingRequest {
     @Step("Retorna os IDs de reservas filtradas pelo checkin")
     public Response getBookingsFilteredByCheckin(String checkin) {
         return given()
-                .queryParam("bookingdates[checkin]", checkin)
+                .queryParam("checkin", checkin)
                 .when()
                 .get("booking");
     }
@@ -50,7 +50,7 @@ public class GetBookingRequest {
     @Step("Retorna os IDs de reservas filtradas pelo checkout")
     public Response getBookingsFilteredByCheckout(String checkout) {
         return given()
-                .queryParam("bookingdates[checkout]", checkout)
+                .queryParam("checkout", checkout)
                 .when()
                 .get("booking");
     }
@@ -58,7 +58,7 @@ public class GetBookingRequest {
     @Step("Retorna os IDs de reservas filtradas pelo checkin e checkout")
     public Response getBookingsFilteredByCheckinAndCheckout(String checkin, String checkout) {
         return given()
-                .queryParams("bookingdates[checkin]", checkin, "checkout", checkout)
+                .queryParams("checkin", checkin, "checkout", checkout)
                 .when()
                 .get("booking");
     }
@@ -69,8 +69,8 @@ public class GetBookingRequest {
                 .queryParams(
                         "firstname", firstname,
                         "lastname", lastname,
-                        "bookingdates[checkin]", checkin,
-                        "bookingdates[checkout]", checkout)
+                        "checkin", checkin,
+                        "checkout", checkout)
                 .when()
                 .get("booking");
     }

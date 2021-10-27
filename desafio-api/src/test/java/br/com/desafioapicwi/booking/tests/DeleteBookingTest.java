@@ -5,6 +5,7 @@ import br.com.desafioapicwi.booking.requests.DeleteBookingRequest;
 import br.com.desafioapicwi.booking.requests.GetBookingRequest;
 import br.com.desafioapicwi.runners.AcceptanceTest;
 import br.com.desafioapicwi.runners.AllTests;
+import br.com.desafioapicwi.runners.E2eTest;
 import br.com.desafioapicwi.utils.Utils;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -52,5 +53,32 @@ public class DeleteBookingTest extends BaseTest {
         deleteBookingRequest.deleteBooking(Utils.getABookingId())
                 .then()
                 .statusCode(204);
+    }
+
+    @Test
+    @Severity(SeverityLevel.MINOR)
+    @Category({AllTests.class, E2eTest.class})
+    @DisplayName("Tentar excluir uma reserva que não existe")
+    public void validaExclusaoDeReservaInexistente(){
+        int bookingId = Utils.getABookingId();
+
+        deleteBookingRequest.deleteBooking(bookingId)
+                .then()
+                .statusCode(201);
+
+        deleteBookingRequest.deleteBooking(bookingId)
+                .then()
+                .statusCode(405);
+    }
+
+    @Test
+    @Severity(SeverityLevel.MINOR)
+    @Category({AllTests.class, E2eTest.class})
+    @DisplayName("Tentar excluir uma reserva sem autorização")
+    public void validaExclusaoDeReservaSemAutorizacao(){
+
+        deleteBookingRequest.deleteBookingNoAuth(Utils.getABookingId())
+                .then()
+                .statusCode(403);
     }
 }

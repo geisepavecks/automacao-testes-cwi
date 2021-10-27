@@ -1,6 +1,8 @@
+br\com\desafioapicwi\suites\E2eTest.class
 br\com\desafioapicwi\suites\HealthcheckTest.class
 br\com\desafioapicwi\suites\SchemaTest.class
 br\com\desafioapicwi\booking\tests\GetBookingTest.class
+br\com\desafioapicwi\runners\E2eTest.class
 br\com\desafioapicwi\booking\tests\PutBookingTest.class
 br\com\desafioapicwi\runners\HealthcheckTest.class
 br\com\desafioapicwi\runners\SchemaTest.class

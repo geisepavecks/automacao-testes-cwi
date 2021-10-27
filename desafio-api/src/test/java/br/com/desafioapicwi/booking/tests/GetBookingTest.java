@@ -5,6 +5,7 @@ import br.com.desafioapicwi.base.BaseTest;
 import br.com.desafioapicwi.booking.requests.GetBookingRequest;
 import br.com.desafioapicwi.runners.AcceptanceTest;
 import br.com.desafioapicwi.runners.AllTests;
+import br.com.desafioapicwi.runners.E2eTest;
 import br.com.desafioapicwi.runners.SchemaTest;
 import br.com.desafioapicwi.utils.Utils;
 import io.qameta.allure.Feature;
@@ -12,6 +13,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.path.json.JsonPath;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -165,22 +167,34 @@ public class GetBookingTest extends BaseTest {
     @Category({AllTests.class, AcceptanceTest.class})
     @DisplayName("Listar IDs de reservas utilizando o filtro name, checkin e checkout")
     public void validaListagemDeIdsDeReservasPorNameCheckinECheckout(){
-        JsonPath jsonPath = getBookingRequest
+        String body = getBookingRequest
                 .getBookingById(Utils.getABookingId())
-                .thenReturn()
-                .body()
-                .jsonPath();
-        String firstname = jsonPath.getString("firstname");
-        String lastname = jsonPath.getString("lastname");
-        Map<String, String> bookingdates = jsonPath.getMap("bookingdates");
+                .getBody()
+                .asString();
+        JSONObject object = new JSONObject(body);
 
-
+        String firstname = object.getString("firstname");
+        String lastname = object.getString("lastname");
+        JSONObject bookingdates = object.getJSONObject("bookingdates");
 
         getBookingRequest
                 .getBookingsFilteredByNameCheckinAndCheckout(
-                        firstname, lastname, bookingdates.get("checkin"), bookingdates.get("checkout"))
+                        firstname,
+                        lastname,
+                        bookingdates.getString("checkin"),
+                        bookingdates.getString("checkout"))
                 .then()
                 .statusCode(200)
-                .body("size()", greaterThan(0));
+                .body("size()", greaterThan(0)).log().body();
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class, E2eTest.class})
+    @DisplayName("Visualizar erro de servidor 500 quando enviar filtro mal formatado")
+    public void validaListagemDeReservasComFiltroMalFormatado(){
+        getBookingRequest.getBookingsFilteredByCheckout("a")
+                .then()
+                .statusCode(500);
     }
 }

@@ -16,4 +16,13 @@ public class DeleteBookingRequest {
                 .when()
                 .delete("booking/{id}");
     }
+
+    @Step("Deleta uma reserva específica sem autorização")
+    public Response deleteBookingNoAuth(int id){
+
+        return given()
+                .pathParam("id", id)
+                .when()
+                .delete("booking/{id}");
+    }
 }

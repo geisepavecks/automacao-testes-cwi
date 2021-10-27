@@ -19,5 +19,16 @@ public class PostBookingRequest {
                 .post("booking");
     }
 
+    @Step("Criar uma nova reserva com o header Accept inválido")
+    public Response postBookingInvalidHeader(JSONObject payload) {
+        return given()
+                .header("Content-Type", "application/json")
+                .accept("text/plain")
+                .auth().preemptive().basic(Utils.USERNAME, Utils.PASSWORD)
+                .body(payload.toString())
+                .when()
+                .post("booking");
+    }
+
 
 }
