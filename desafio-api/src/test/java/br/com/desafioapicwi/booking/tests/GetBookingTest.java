@@ -162,6 +162,12 @@ public class GetBookingTest extends BaseTest {
                 .body("size()", greaterThan(0));
     }
 
+ /*
+ * Neste teste, os filtros de checkin e checkout quando usados em conjunto, apresentam duas limitações. A primeira,
+ * sobre o checkin, é que ele apenas funciona caso o dia esteja ausente. E a segunda, sobre o checkout, é que ele apenas
+ * funciona caso a data esteja completa.
+ *
+ * */
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, AcceptanceTest.class})
