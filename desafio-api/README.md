@@ -4,7 +4,7 @@
 
 Trata-se de uma prática de testes que simula a manipulação de um sistema interno de reservas em um hotel.
 
-Nessa prática foram utilizados 15 testes ao total, dentro de quatro *Suites*: 
+Nessa prática foram utilizados 25 testes ao total, dentro de quatro *Suites*: 
 
 - **HealthCheck** - teste simples para confirmar se a API está rodando como o esperado.
 - **Schema** - teste para garantir que a estrutura da *response* está de acordo.
